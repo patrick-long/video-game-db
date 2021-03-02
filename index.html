@@ -13,7 +13,7 @@
   crossorigin="anonymous"></script>
   <!-- Link to JS file -->
     <script defer src="./js/script.js"></script>
-    <title>RAWG API Project</title>
+    <title>Video Game DB App</title>
 </head>
 <body>
     <h1>Video Game Info Database</h1>
@@ -21,33 +21,37 @@
         <div class="main">
             <form>
                 <input type="text" placeholder="Title (e.g. Destiny)" id="search-bar">
-                <input type="submit" value="Results">
+                <input id="submit" type="submit" value="Results">
             </form>
             <div class="container">
-                <div class="card">
+                <div class="bigCard">
                     <h2 id="name"></h2>
-                    <p id='d'>Description:</p>
+                    <p id='d'></p>
                     <p id="description"></p>
-                    <p id='p'>Publisher:</p>
+                    <p id='p'></p>
                     <p id="publisher"></p>
-                    <p id='m'>Metacritic Rating:</p>
+                    <p id='m'></p>
                     <p id="metacritic"></p>
-                    <p id='r'>ESRB Rating:</p>
+                    <p id='r'></p>
                     <p id="rating"></p>
-                    <p id='re'>Release Date:</p>
+                    <p id='re'></p>
                     <p id="release-date"></p>
-                    <p id='g'>Genres:</p>
+                    <p id='g'></p>
                     <p id="genres"></p>
-                    <p id='w'>Website:</p>
+                    <p id='w'></p>
                     <a id="website" href="" target="_blank"></a>
-                    <p>Screenshots</p>
-                    <img id="screenshot1" src="" alt="N/A">
+                </div>
+                    <img id="screenshot1" src="https://cdnb.artstation.com/p/assets/images/images/002/800/365/medium/tu-bui-titanfall-box-cover-02.jpg?1465858055" alt="N/A">
                     <img id="screenshot2" src="" alt="">
+                <div class="upcoming">
+                    <h2 id="upName">Upcoming Games of 2021</h2>
+                    <div class="upcomingCards">
+                    </div>
                 </div>
             </div>
         </div>
     <hr>
     <footer id="copyright"></footer>
-        <small>Copyright &copy; 2021, RAWG API App. All Rights Reserved</small>
+        <small>Copyright &copy; 2021, Video Game DB App. All Rights Reserved</small>
 </body>
 </html>
