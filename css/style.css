@@ -1,11 +1,24 @@
 h1 {
     text-align: center;
+    font-size: 50px;
+    margin: 0 auto;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 #screenshot1, #screenshot2 {
     max-width: 100%;
+}
+
+small {
+    display: flex;
+    justify-content: center;
+}
+
+#d, #p, #m, #r, #re, #g, #w {
+    font-weight: bold;
+    text-decoration: underline; 
+    font-size: 20px; 
 }
