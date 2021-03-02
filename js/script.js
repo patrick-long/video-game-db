@@ -24,9 +24,8 @@ $('form').on('submit', handleSubmit);
 function handleSubmit(event) {
     event.preventDefault();
     let gameName = $searchBar.val().replace(/ /g, '-');
-    console.log(gameName);
     $.ajax(`${BASE_URL}/${gameName}`).then((data) => {
-        gameData = data;
+        gameData = $(data);
         console.log(gameData);
         render(); 
     }, (error) => {
@@ -38,45 +37,48 @@ function handleSubmit(event) {
 
 const render = () => {
     if (gameData) {
-        $name.text(gameData.name);
-        $description.text(gameData.description_raw);
-        if (gameData.publishers[0].name) {
-            $publisher.text(gameData.publishers[0].name);
+        $name.text(gameData[0].name);
+        $description.text(gameData[0].description_raw);
+        if (gameData[0].publishers[0] !== null && gameData[0].publishers[0] !== null && !!gameData[0].publishers[0].name) {
+            $publisher.text(gameData[0].publishers[0].name);
         } else {
-            $publisher.text('N/A');
+            $publisher.hide();
+            $('#p').hide();
         }
-        if (gameData.metacritic) {
-            $metacritic.text(`${gameData.metacritic}/100`);
+        if (!!gameData[0].metacritic) {
+            $metacritic.text(`${gameData[0].metacritic}/100`);
         } else {
-            $metacritic.text('N/A');
+            $metacritic.hide();
+            $('#m').hide();
         }
-        if (gameData.esrb_rating.name) {
-            $rating.text(gameData.esrb_rating.name);
+        if (gameData[0].esrb_rating !== null && !!gameData[0].esrb_rating.name) {
+            $rating.text(gameData[0].esrb_rating.name);
         } else {
-            $rating.text('N/A');
+            $rating.hide();
+            $('#r').hide();
         }
-        if (gameData.released) {
-            $releaseDate.text(gameData.released);
+        if (!!gameData[0].released) {
+            $releaseDate.text(gameData[0].released);
         } else {
-            $releaseDate.text('N/A');
+            $releaseDate.hide();
+            $('#re').hide();
         }
-        if (gameData.genres.length === 1) {
-            $genres.text(`${gameData.genres[0].name}`);
+        if (gameData[0].genres.length === 1) {
+            $genres.text(`${gameData[0].genres[0].name}`);
         } else {
-            $genres.text(`${gameData.genres[0].name}, ${gameData.genres[1].name}`);
+            $genres.text(`${gameData[0].genres[0].name}, ${gameData[0].genres[1].name}`);
         }
-        if (gameData.website) {
-            $website.text(gameData.website);
-            $website.attr('href', gameData.website);
+        if (!!gameData[0].website) {
+            $website.text(gameData[0].website);
+            $website.attr('href', gameData[0].website);
         } else {
-            $website.text('N/A');
-            $website.attr('href', '#');
+            $('#w').hide();
         }
-        if (gameData.background_image) {
-            $screenshot1.attr('src', gameData.background_image);
+        if (!!gameData[0].background_image) {
+            $screenshot1.attr('src', gameData[0].background_image);
         }
-        if (gameData.background_image_additional) {
-            $screenshot2.attr('src', gameData.background_image_additional);
+        if (!!gameData[0].background_image_additional) {
+            $screenshot2.attr('src', gameData[0].background_image_additional);
         }
     }
 };
