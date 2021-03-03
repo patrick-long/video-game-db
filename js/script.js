@@ -16,18 +16,17 @@ const $copyright = $('#copyright');
 const $searchBar = $('#search-bar');
 
 const BASE_URL = 'https://api.rawg.io/api/games';
-const API_KEY = '';
+const API_KEY = '2382cc10c0784e578a1005c8d9b3c447';
 const UPCOMING_URL = 'https://api.rawg.io/api/games?dates=2021-03-01,2021-12-31&ordering=-added';
 
 // event listeners
 $('form').on('submit', handleSubmit);
 
 // functions
-
 function handleSubmit(event) {
     event.preventDefault();
     let gameName = $searchBar.val().replace(/ /g, '-');
-    $.ajax(`${BASE_URL}/${gameName}`).then((data) => {
+    $.ajax(`${BASE_URL}/${gameName}?key=${API_KEY}`).then((data) => {
         gameData = $(data);
         console.log(gameData);
         renderUser(); 
@@ -78,24 +77,26 @@ const renderUser = () => {
             $genres.text(`${gameData[0].genres[0].name}, ${gameData[0].genres[1].name}`);
         }
         if (!!gameData[0].website) {
-            $('#w').html('Website:');
+            $('#w').text('Website:');
             $website.text(gameData[0].website);
             $website.attr('href', gameData[0].website);
         } else {
-            $('#w').hide();
+            $('#w').text('');
+            $website.text('');
         }
         if (!!gameData[0].background_image) {
             $screenshot1.attr('src', gameData[0].background_image);
-            $screenshot1.width('50%');
+            $screenshot1.width('90%');
         }
         if (!!gameData[0].background_image_additional) {
             $screenshot2.attr('src', gameData[0].background_image_additional);
+            $('#s').html('Additional Screenshot:');
         }
     }
 };
 
 // pulls data for upcoming top 5 upcoming games
-$.ajax(`${UPCOMING_URL}`).then(data => {
+$.ajax(`${UPCOMING_URL}?key=${API_KEY}`).then(data => {
     gameData = $(data);
     console.log(gameData);
     renderUpcoming(); 
@@ -105,18 +106,18 @@ $.ajax(`${UPCOMING_URL}`).then(data => {
 
 const renderUpcoming = () => {
 // first upcoming game details
-    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[0].name}</h2><img src="${gameData[0].results[0].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[0].released}</p><p class="g">Genre(s): ${gameData[0].results[0].genres[0].name}, ${gameData[0].results[0].genres[1].name}, ${gameData[0].results[0].genres[2].name}</p><hr>`);
+    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[0].name}</h2><img src="${gameData[0].results[0].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[0].released}</p><p class="g">Genre: ${gameData[0].results[0].genres[0].name}</p><hr>`);
 
 // second upcoming game details
-    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[1].name}</h2><img src="${gameData[0].results[1].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[1].released}</p><p class="g">Genre(s): ${gameData[0].results[1].genres[0].name}, ${gameData[0].results[1].genres[1].name}</p><hr>`);
+    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[1].name}</h2><img src="${gameData[0].results[1].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[1].released}</p><p class="g">Genre: ${gameData[0].results[1].genres[0].name}</p><hr>`);
 
 // third upcoming game details
-    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[2].name}</h2><img src="${gameData[0].results[2].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[2].released}</p><p class="g">Genre(s): ${gameData[0].results[2].genres[0].name}, ${gameData[0].results[2].genres[1].name}</p><hr>`);
+    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[2].name}</h2><img src="${gameData[0].results[2].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[2].released}</p><p class="g">Genre: ${gameData[0].results[2].genres[0].name}</p><hr>`);
 
 // fourth upcoming game details
-    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[3].name}</h2><img src="${gameData[0].results[3].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[3].released}</p><p class="g">Genre(s): ${gameData[0].results[3].genres[0].name}, ${gameData[0].results[3].genres[1].name}</p><hr>`);
+    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[3].name}</h2><img src="${gameData[0].results[3].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[3].released}</p><p class="g">Genre: ${gameData[0].results[3].genres[0].name}</p><hr>`);
 
 // fifth upcoming game details
-    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[4].name}</h2><img src="${gameData[0].results[4].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[4].released}</p><p class="g">Genre(s): ${gameData[0].results[4].genres[0].name}, ${gameData[0].results[4].genres[1].name}, ${gameData[0].results[4].genres[2].name}</p>`);
+    $('.upcomingCards').append(`<h2 class="name">${gameData[0].results[4].name}</h2><img src="${gameData[0].results[4].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[4].released}</p><p class="g">Genre: ${gameData[0].results[4].genres[0].name}</p>`);
 };
 
