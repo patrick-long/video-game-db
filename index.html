@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Link to CSS stylesheet -->
-    <link rel="stylesheet" href="./css/style.css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- Link to CSS stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
     <!-- jQuery -->
     <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -19,11 +19,27 @@
 </head>
 <body>
     <h1>Video Game Info Database</h1>
-    <hr>
+    <hr id="top-break">
         <div class="main">
             <form>
-                <input type="text" placeholder="Title (e.g. Destiny)" id="search-bar">
-                <input id="submit" type="submit" value="Results">
+                <input type="text" class="form-control" placeholder="Title (e.g. Destiny)" id="search-bar">
+                <input class="btn btn-success" id="submit" type="submit" value="Results">
+            </form>
+            <form>
+                <div class="form-check">
+                    <label for="checkbox1" class="form-check-label">Publisher</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox1">
+                    <label for="checkbox2" class="form-check-label">Metacritic Rating</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox2">
+                    <label for="checkbox3" class="form-check-label">ESRB Rating</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox3">
+                    <label for="checkbox4" class="form-check-label">Release Date</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox4">
+                    <label for="checkbox5" class="form-check-label">Genres</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox5">
+                    <label for="checkbox6" class="form-check-label">Website</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox6">
+                </div>
             </form>
             <div class="container">
                 <div class="bigCard">
