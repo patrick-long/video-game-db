@@ -53,6 +53,8 @@ function handleSubmit(event) {
 
 const renderUser = () => {
     if (gameData) {
+        document.querySelector(".big-card").style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        document.querySelector(".big-card").style.height = "auto";
         $name.text(gameData[0].name);
         $('#d').html('Description:');
         $description.text(gameData[0].description_raw);
