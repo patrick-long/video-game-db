@@ -55,6 +55,7 @@ const renderUser = () => {
     if (gameData) {
         document.querySelector(".big-card").style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
         document.querySelector(".big-card").style.height = "auto";
+        document.querySelector(".container").style.height = "100%";
         $name.text(gameData[0].name);
         $('#d').html('Description:');
         $description.text(gameData[0].description_raw);
@@ -136,19 +137,19 @@ $.ajax(`${UPCOMING_URL}?key=${API_KEY}`).then(data => {
 
 const renderUpcoming = () => {
 // first upcoming game details
-    $('.upcomingCards').append(`<div class="upcomingCard1"><h2 class="name">${gameData[0].results[0].name}</h2><img src="${gameData[0].results[0].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[0].released}</p><p class="g">Genre: ${gameData[0].results[0].genres[0].name}</p></div><hr>`);
+    $('.upcomingCardsTop').append(`<div class="upcomingCard1"><h2 class="name">${gameData[0].results[0].name}</h2><img src="${gameData[0].results[0].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[0].released}</p><p class="g">Genre: ${gameData[0].results[0].genres[0].name}</p></div>`);
 
 // second upcoming game details
-    $('.upcomingCards').append(`<div class="upcomingCard2"><h2 class="name">${gameData[0].results[1].name}</h2><img src="${gameData[0].results[1].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[1].released}</p><p class="g">Genre: ${gameData[0].results[1].genres[0].name}</p></div><hr>`);
+    $('.upcomingCardsTop').append(`<div class="upcomingCard2"><h2 class="name">${gameData[0].results[1].name}</h2><img src="${gameData[0].results[1].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[1].released}</p><p class="g">Genre: ${gameData[0].results[1].genres[0].name}</p></div>`);
 
 // third upcoming game details
-    $('.upcomingCards').append(`<div class="upcomingCard3"><h2 class="name">${gameData[0].results[2].name}</h2><img src="${gameData[0].results[2].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[2].released}</p><p class="g">Genre: ${gameData[0].results[2].genres[0].name}</p></div><hr>`);
+    $('.upcomingCardsBottom').append(`<div class="upcomingCard3"><h2 class="name">${gameData[0].results[2].name}</h2><img src="${gameData[0].results[2].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[2].released}</p><p class="g">Genre: ${gameData[0].results[2].genres[0].name}</p></div>`);
 
 // fourth upcoming game details
-    $('.upcomingCards').append(`<div class="upcomingCard4"><h2 class="name">${gameData[0].results[3].name}</h2><img src="${gameData[0].results[3].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[3].released}</p><p class="g">Genre: ${gameData[0].results[3].genres[0].name}</p></div><hr>`);
+    $('.upcomingCardsBottom').append(`<div class="upcomingCard4"><h2 class="name">${gameData[0].results[3].name}</h2><img src="${gameData[0].results[3].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[3].released}</p><p class="g">Genre: ${gameData[0].results[3].genres[0].name}</p></div>`);
 
 // fifth upcoming game details
-    $('.upcomingCards').append(`<div class="upcomingCard5"><h2 class="name">${gameData[0].results[4].name}</h2><img src="${gameData[0].results[4].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[4].released}</p><p class="g">Genre: ${gameData[0].results[4].genres[0].name}</p></div>`);
+    $('.upcomingCardsBottom').append(`<div class="upcomingCard5"><h2 class="name">${gameData[0].results[4].name}</h2><img src="${gameData[0].results[4].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[4].released}</p><p class="g">Genre: ${gameData[0].results[4].genres[0].name}</p></div>`);
 };
 
 
