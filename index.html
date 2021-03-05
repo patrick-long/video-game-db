@@ -20,57 +20,66 @@
 <body>
     <h1>Video Game Info Database</h1>
     <hr id="top-break">
-        <div class="main">
-            <form>
-                <input type="text" class="form-control" placeholder="Title (e.g. Destiny)" id="search-bar">
-                <input class="btn btn-success" id="submit" type="submit" value="Results">
-            </form>
-            <form>
-                <div class="form-check">
-                    <label for="checkbox1" class="form-check-label">Publisher</label>
-                    <input type="checkbox" class="form-check-input" id="checkbox1">
-                    <label for="checkbox2" class="form-check-label">Metacritic Rating</label>
-                    <input type="checkbox" class="form-check-input" id="checkbox2">
-                    <label for="checkbox3" class="form-check-label">ESRB Rating</label>
-                    <input type="checkbox" class="form-check-input" id="checkbox3">
-                    <label for="checkbox4" class="form-check-label">Release Date</label>
-                    <input type="checkbox" class="form-check-input" id="checkbox4">
-                    <label for="checkbox5" class="form-check-label">Genres</label>
-                    <input type="checkbox" class="form-check-input" id="checkbox5">
-                    <label for="checkbox6" class="form-check-label">Website</label>
-                    <input type="checkbox" class="form-check-input" id="checkbox6">
-                </div>
-            </form>
-            <div class="container">
-                <div class="bigCard">
-                    <h2 id="name"></h2>
-                    <img class="image-fluid" id="screenshot1" src="https://cdnb.artstation.com/p/assets/images/images/002/800/365/medium/tu-bui-titanfall-box-cover-02.jpg?1465858055" alt="N/A">
-                    <p id='d'></p>
-                    <p id="description"></p>
-                    <p id='p'></p>
-                    <p id="publisher"></p>
-                    <p id='m'></p>
-                    <p id="metacritic"></p>
-                    <p id='r'></p>
-                    <p id="rating"></p>
-                    <p id='re'></p>
-                    <p id="release-date"></p>
-                    <p id='g'></p>
-                    <p id="genres"></p>
-                    <p id='w'></p>
-                    <a id="website" href="" target="_blank"></a>
-                    <p id="s"></p>
-                    <img class="image-fluid" id="screenshot2" src="" alt="">
-                </div>
-                <div class="upcoming">
-                    <h2 id="upName">Upcoming Games of 2021</h2>
-                    <div class="upcomingCards">
-                    </div>
-                </div>
+    <div class="container">
+        <form>
+            <input type="text" class="form-control" placeholder="Game Title (e.g. Destiny)" id="search-bar">
+            <input class="btn btn-success" id="submit" type="submit" value="Results">
+        </form>
+        <form class="form-check">
+            <div>
+                <label for="checkbox1" class="form-check-label">Publisher</label>
+                <input type="checkbox" class="form-check-input" id="checkbox1">
+            </div>
+            <div>
+                <label for="checkbox2" class="form-check-label">Metacritic Rating</label>
+                <input type="checkbox" class="form-check-input" id="checkbox2">
+            </div>
+            <div>
+                <label for="checkbox3" class="form-check-label">ESRB Rating</label>
+                <input type="checkbox" class="form-check-input" id="checkbox3">
+            </div>
+            <div>
+                <label for="checkbox4" class="form-check-label">Release Date</label>
+                <input type="checkbox" class="form-check-input" id="checkbox4">
+            </div>
+            <div>
+                <label for="checkbox5" class="form-check-label">Genres</label>
+                <input type="checkbox" class="form-check-input" id="checkbox5">
+            </div>
+            <div>
+                <label for="checkbox6" class="form-check-label">Website</label>
+                <input type="checkbox" class="form-check-input" id="checkbox6">
+            </div>  
+        </form>
+            <div class="big-card">
+                <h2 id="name"></h2>
+                <img class="image-fluid" id="screenshot1" src="">
+                <p id='d'></p>
+                <p id="description"></p>
+                <p id='p'></p>
+                <p id="publisher"></p>
+                <p id='m'></p>
+                <p id="metacritic"></p>
+                <p id='r'></p>
+                <p id="rating"></p>
+                <p id='re'></p>
+                <p id="release-date"></p>
+                <p id='g'></p>
+                <p id="genres"></p>
+                <p id='w'></p>
+                <a id="website" href="" target="_blank"></a>
+                <p id="s"></p>
+                <img class="image-fluid" id="screenshot2" src="" alt="">
+            </div>
+    </div>
+        <div class="upcoming">
+            <h2 id="upName">Upcoming Games of 2021</h2>
+            <div class="upcomingCards">
             </div>
         </div>
-    <hr>
-    <footer id="copyright"></footer>
+    <hr id="bottom-hr">
+    <footer id="copyright">
         <small>Copyright &copy; 2021, Video Game DB App. All Rights Reserved</small>
+    </footer>
 </body>
 </html>
