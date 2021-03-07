@@ -18,12 +18,18 @@ Web application used to search for and display filterable information on video g
 
 ## 📸 Screenshots of Deployed App 📸
 
+Home screen for the entire page
 ![Home page screenshot](/imgs/home-page-ss.png)
 
+Choose to desplay filtered information if desired
+![Filter bar screenshot](/imgs/filter-bar-ss.png)
+
+Game information results
 ![First bit of data screenshot](/imgs/Data1-ss.png)
 
 ![Second bit of data screenshot](/imgs/Data2-ss.png)
 
+Results for upcoming games
 ![Upcoming cards screenshot 1](/imgs/Upcoming1-ss.png)
 
 ![Upcoming cards screenshot 2](/imgs/Upcoming2-ss.png)
@@ -35,6 +41,15 @@ Web application used to search for and display filterable information on video g
 
 All you need to do is go to my [Video Game DB App](https://videogamesearchdb-app.netlify.app/) website and search for any game! 
 
+
+---
+
+## 🕵️ How to Use the App 🕵️
+
+- Type in your favorite video game title in the search bar
+- Choose to filter information if preferred using the checkboxes at the top
+- Have a look at the info on the game and other upcoming games
+- That's it!
 
 ---
 
