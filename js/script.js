@@ -53,14 +53,18 @@ function handleSubmit(event) {
 
 const renderUser = () => {
     if (gameData) {
+        // styles big card and container
         document.querySelector(".big-card").style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
         document.querySelector(".big-card").style.height = "auto";
         document.querySelector(".container").style.height = "100%";
+        // populates name data
         $name.text(gameData[0].name);
+        //populates description and data
         $('#d').html('Description:');
         $description.text(gameData[0].description_raw);
-        if ($publisherCheckbox[0].checked === true) {
-            if (gameData[0].publishers[0] !== null && gameData[0].publishers[0] !== null && !!gameData[0].publishers[0].name) {
+        // populates publisher and data if checked
+        if ($publisherCheckbox.prop('checked') === true) {
+            if (!!gameData[0].publishers[0].name) {
                 $('#p').html('Publisher:');
                 $publisher.text(gameData[0].publishers[0].name);
             }
@@ -68,7 +72,8 @@ const renderUser = () => {
             $publisher.hide();
             $('#p').hide();
         }
-        if ($metacriticCheckbox[0].checked === true) {
+        // populates Metacritic rating and data if checked
+        if ($metacriticCheckbox.prop('checked') === true) {
             if (!!gameData[0].metacritic) {
                 $('#m').html('Metacritic Rating:');
                 $metacritic.text(`${gameData[0].metacritic}/100`);
@@ -77,8 +82,9 @@ const renderUser = () => {
             $metacritic.hide();
             $('#m').hide();
         }
-        if ($ratingCheckbox[0].checked === true) {
-            if (gameData[0].esrb_rating !== null && !!gameData[0].esrb_rating.name) {
+        // populates ESRB rating and data if checked
+        if ($ratingCheckbox.prop('checked') === true) {
+            if (!!gameData[0].esrb_rating.name) {
                 $('#r').html('ESRB Rating:');
                 $rating.text(gameData[0].esrb_rating.name);
             }
@@ -86,7 +92,8 @@ const renderUser = () => {
             $rating.hide();
             $('#r').hide();
         }
-        if ($releaseCheckbox[0].checked === true) {
+        // populates release date and data if checked
+        if ($releaseCheckbox.prop('checked') === true) {
             if (!!gameData[0].released) {
                 $('#re').html('Release Date:');
                 $releaseDate.text(gameData[0].released);
@@ -95,18 +102,21 @@ const renderUser = () => {
             $releaseDate.hide();
             $('#re').hide();
         }
-        if ($genresCheckbox[0].checked === true) {
+        // populates genres and data if checked
+        if ($genresCheckbox.prop('checked') === true) {
             if (gameData[0].genres.length === 1) {
-                $('#g').html('Genre(s):');
+                $('#g').html('Genre:');
                 $genres.text(`${gameData[0].genres[0].name}`);
             } else {
+                $('#g').html('Genres:');
                 $genres.text(`${gameData[0].genres[0].name}, ${gameData[0].genres[1].name}`);
             }
         } else {
             $('#g').text('');
             $genres.text('');
         }
-        if ($websiteCheckbox[0].checked === true) {
+        // populates website and link data if checked
+        if ($websiteCheckbox.prop('checked') === true) {
             if (!!gameData[0].website) {
                 $('#w').text('Website:');
                 $website.text(gameData[0].website);
@@ -116,9 +126,11 @@ const renderUser = () => {
             $('#w').text('');
             $website.text('');
         }
+        // populates top of page game image 
         if (!!gameData[0].background_image) {
             $screenshot1.attr('src', gameData[0].background_image);
         }
+        // populates bottom of page extra screenshot
         if (!!gameData[0].background_image_additional) {
             $screenshot2.attr('src', gameData[0].background_image_additional);
             $('#s').html('Additional Screenshot:');
@@ -129,7 +141,6 @@ const renderUser = () => {
 // pulls data for upcoming top 5 upcoming games
 $.ajax(`${UPCOMING_URL}?key=${API_KEY}`).then(data => {
     gameData = $(data);
-    console.log(gameData);
     renderUpcoming(); 
 }, error => {
     console.log('Bad upcoming games request', error);
@@ -137,19 +148,43 @@ $.ajax(`${UPCOMING_URL}?key=${API_KEY}`).then(data => {
 
 const renderUpcoming = () => {
 // first upcoming game details
-    $('.upcomingCardsTop').append(`<div class="upcomingCard1"><h2 class="name">${gameData[0].results[0].name}</h2><img src="${gameData[0].results[0].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[0].released}</p><p class="g">Genre: ${gameData[0].results[0].genres[0].name}</p></div>`);
+    $('.upcomingCardsTop').append(`<div class="upcomingCard1">
+        <h2 class="name">${gameData[0].results[0].name}</h2>
+        <img src="${gameData[0].results[0].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[0].released}</p>
+        <p class="g">Genre: ${gameData[0].results[0].genres[0].name}</p>
+        </div>`);
 
 // second upcoming game details
-    $('.upcomingCardsTop').append(`<div class="upcomingCard2"><h2 class="name">${gameData[0].results[1].name}</h2><img src="${gameData[0].results[1].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[1].released}</p><p class="g">Genre: ${gameData[0].results[1].genres[0].name}</p></div>`);
+    $('.upcomingCardsTop').append(`<div class="upcomingCard2">
+        <h2 class="name">${gameData[0].results[1].name}</h2>
+        <img src="${gameData[0].results[1].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[1].released}</p>
+        <p class="g">Genre: ${gameData[0].results[1].genres[0].name}</p>
+        </div>`);
 
 // third upcoming game details
-    $('.upcomingCardsBottom').append(`<div class="upcomingCard3"><h2 class="name">${gameData[0].results[2].name}</h2><img src="${gameData[0].results[2].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[2].released}</p><p class="g">Genre: ${gameData[0].results[2].genres[0].name}</p></div>`);
+    $('.upcomingCardsBottom').append(`<div class="upcomingCard3">
+        <h2 class="name">${gameData[0].results[2].name}</h2>
+        <img src="${gameData[0].results[2].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[2].released}</p>
+        <p class="g">Genre: ${gameData[0].results[2].genres[0].name}</p>
+        </div>`);
 
 // fourth upcoming game details
-    $('.upcomingCardsBottom').append(`<div class="upcomingCard4"><h2 class="name">${gameData[0].results[3].name}</h2><img src="${gameData[0].results[3].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[3].released}</p><p class="g">Genre: ${gameData[0].results[3].genres[0].name}</p></div>`);
+    $('.upcomingCardsBottom').append(`<div class="upcomingCard4">
+        <h2 class="name">${gameData[0].results[3].name}</h2>
+        <img src="${gameData[0].results[3].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[3].released}</p>
+        <p class="g">Genre: ${gameData[0].results[3].genres[0].name}</p>
+        </div>`);
 
 // fifth upcoming game details
-    $('.upcomingCardsBottom').append(`<div class="upcomingCard5"><h2 class="name">${gameData[0].results[4].name}</h2><img src="${gameData[0].results[4].background_image}" class="upcomingImage"><p class="re">Release Date: ${gameData[0].results[4].released}</p><p class="g">Genre: ${gameData[0].results[4].genres[0].name}</p></div>`);
+    $('.upcomingCardsBottom').append(`<div class="upcomingCard5">
+        <h2 class="name">${gameData[0].results[4].name}</h2>
+        <img src="${gameData[0].results[4].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[4].released}</p>
+        <p class="g">Genre: ${gameData[0].results[4].genres[0].name}</p>
+        </div>`);
 };
-
 
