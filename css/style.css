@@ -104,10 +104,12 @@ form {
 .upcoming1 {
     padding-top: 10px;
     background: url(/imgs/forest-landscape.gif) fixed center;
+    height: 100%;
 }
 
 .upcoming2 {
     background: url(/imgs/pixel-game-art.gif) no-repeat fixed center;
+    height: 100%; 
 }
 
 .upcomingImage {
@@ -202,5 +204,20 @@ form {
 @media only screen and (min-width: 960px) {
     #search-bar {
         width: 505px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        background: fixed;
+    }
+    .upcoming1 {
+        background: fixed;
+    }
+    .upcoming2 {
+        background: fixed; 
+    }
+    .upcomingCard1 > h2, .upcomingCard2 > h2, .upcomingCard3 > h2, .upcomingCard4 > h2, .upcomingCard5 > h2 {
+        font-size: 15px;
     }
 }
