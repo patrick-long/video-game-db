@@ -104,12 +104,14 @@ form {
 
 .upcoming1 {
     padding-top: 10px;
-    background: url(/imgs/forest-landscape.gif) fixed center;
+    background: url(/imgs/forest-landscape.gif) no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
 }
 
 .upcoming2 {
-    background: url(/imgs/pixel-game-art.gif) no-repeat fixed center;
+    background: url(/imgs/pixel-game-art.gif) no-repeat center center fixed;
+    background-size: cover;
     height: 100%; 
 }
 
