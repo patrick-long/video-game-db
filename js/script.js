@@ -139,7 +139,7 @@ const renderUser = () => {
 };
 
 // pulls data for upcoming top 5 upcoming games
-$.ajax(`${UPCOMING_URL}?key=${API_KEY}`).then(data => {
+$.ajax(`${UPCOMING_URL}&key=${API_KEY}`).then(data => {
     gameData = $(data);
     renderUpcoming(); 
 }, error => {
@@ -147,44 +147,21 @@ $.ajax(`${UPCOMING_URL}?key=${API_KEY}`).then(data => {
 });
 
 const renderUpcoming = () => {
-// first upcoming game details
-    $('.upcomingCardsTop').append(`<div class="upcomingCard1">
-        <h2 class="name">${gameData[0].results[0].name}</h2>
-        <img src="${gameData[0].results[0].background_image}" class="upcomingImage">
-        <p class="re">Release Date: ${gameData[0].results[0].released}</p>
-        <p class="g">Genre: ${gameData[0].results[0].genres[0].name}</p>
+    for (i = 0; i < 2; i++) {
+        $('.upcomingCardsTop').append(`<div class="upcomingCard1">
+        <h2 class="name">${gameData[0].results[i].name}</h2>
+        <img src="${gameData[0].results[i].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[i].released}</p>
+        <p class="g">Genre: ${gameData[0].results[i].genres[0].name}</p>
         </div>`);
-
-// second upcoming game details
-    $('.upcomingCardsTop').append(`<div class="upcomingCard2">
-        <h2 class="name">${gameData[0].results[1].name}</h2>
-        <img src="${gameData[0].results[1].background_image}" class="upcomingImage">
-        <p class="re">Release Date: ${gameData[0].results[1].released}</p>
-        <p class="g">Genre: ${gameData[0].results[1].genres[0].name}</p>
+    }
+    for (i = 2; i < 5; i++) {
+        $('.upcomingCardsBottom').append(`<div class="upcomingCard1">
+        <h2 class="name">${gameData[0].results[i].name}</h2>
+        <img src="${gameData[0].results[i].background_image}" class="upcomingImage">
+        <p class="re">Release Date: ${gameData[0].results[i].released}</p>
+        <p class="g">Genre: ${gameData[0].results[i].genres[0].name}</p>
         </div>`);
-
-// third upcoming game details
-    $('.upcomingCardsBottom').append(`<div class="upcomingCard3">
-        <h2 class="name">${gameData[0].results[2].name}</h2>
-        <img src="${gameData[0].results[2].background_image}" class="upcomingImage">
-        <p class="re">Release Date: ${gameData[0].results[2].released}</p>
-        <p class="g">Genre: ${gameData[0].results[2].genres[0].name}</p>
-        </div>`);
-
-// fourth upcoming game details
-    $('.upcomingCardsBottom').append(`<div class="upcomingCard4">
-        <h2 class="name">${gameData[0].results[3].name}</h2>
-        <img src="${gameData[0].results[3].background_image}" class="upcomingImage">
-        <p class="re">Release Date: ${gameData[0].results[3].released}</p>
-        <p class="g">Genre: ${gameData[0].results[3].genres[0].name}</p>
-        </div>`);
-
-// fifth upcoming game details
-    $('.upcomingCardsBottom').append(`<div class="upcomingCard5">
-        <h2 class="name">${gameData[0].results[4].name}</h2>
-        <img src="${gameData[0].results[4].background_image}" class="upcomingImage">
-        <p class="re">Release Date: ${gameData[0].results[4].released}</p>
-        <p class="g">Genre: ${gameData[0].results[4].genres[0].name}</p>
-        </div>`);
+    }
 };
 
