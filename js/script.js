@@ -142,7 +142,8 @@ const renderUser = () => {
 $.ajax(`${UPCOMING_URL}&key=${API_KEY}`).then(data => {
     gameData = $(data);
     renderUpcoming(); 
-    console.log(gameData[0].results[0].genres.map(genre => genre.name));
+    const gameGenres = data.results[0].genres.map(genre => genre.name);
+    console.log(gameGenres);
 }, error => {
     console.log('Bad upcoming games request', error);
 });
