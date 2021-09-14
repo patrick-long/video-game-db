@@ -142,6 +142,7 @@ const renderUser = () => {
 $.ajax(`${UPCOMING_URL}&key=${API_KEY}`).then(data => {
     gameData = $(data);
     renderUpcoming(); 
+    console.log(gameData[0].results[0].genres.map(genre => genre.name));
 }, error => {
     console.log('Bad upcoming games request', error);
 });
@@ -152,7 +153,7 @@ const renderUpcoming = () => {
         <h2 class="name">${gameData[0].results[i].name}</h2>
         <img src="${gameData[0].results[i].background_image}" class="upcomingImage">
         <p class="re">Release Date: ${gameData[0].results[i].released}</p>
-        <p class="g">Genre: ${gameData[0].results[i].genres[0].name}</p>
+        <p class="g">Genre: ${gameData[0].results[i].genres.map((genre) => genre.name)}</p>
         </div>`);
     }
     for (i = 2; i < 5; i++) {
